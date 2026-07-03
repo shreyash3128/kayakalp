@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  # 1. Database Service Engine
+  db:
+    image: mysql:8.0
+    container_name: kayakalp_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: kayakalp_db
+      MYSQL_ROOT_PASSWORD: rootpassword123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # 2. Django Backend Service Engine
   backend:
     build: ./backend
     container_name: kayakalp_backend
@@ -11,3 +25,9 @@ services:
       - "8000:8000"
     environment:
       - DEBUG=1
+    depends_on:
+      - db
+
+# Define the persistent external volume block
+volumes:
+  mysql_data:
