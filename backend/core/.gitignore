@@ -1,0 +1,18 @@
+# Python bytecode artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environments
+.env
+.venv
+env/
+venv/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
